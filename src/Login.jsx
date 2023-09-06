@@ -1,33 +1,13 @@
-import { Box, Button, Checkbox, Container, FormControlLabel, Grid, TextField, Typography } from '@mui/material'
+import { Alert, Box, Button, Checkbox, Container, FormControlLabel, Grid, TextField, Typography } from '@mui/material'
 import React from 'react'
-import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useState,useEffect } from 'react';
 import { useNavigate, json } from 'react-router-dom';
 
-const theme = createTheme({
-    palette: {
-        mode: 'light',
-        primary: {
-          main: '#d65689',
-        },
-        secondary: {
-          main: '#91f387',
-          dark: '#d2205a',
-        },
-        error: {
-          main: '#ff0000',
-        },
-        warning: {
-          main: '#ffff8d',
-        },
-        info: {
-          main: '#021fd1',
-        },
-        success: {
-          main: '#045e09',
-        },
-      },
-});
+/*QUANDO IMPORTA EM BAIXO E CITA A FUNÇÃO AUTOMATICAMENTE APARECE A FUNÇÃO AQUI*/
+
+
+
+/* STYLE DO SITE,A PALETA DE CORES COPIADAS DO SITE*/ 
 
     function Login() {
 
@@ -39,6 +19,8 @@ const theme = createTheme({
 
     const navigate = useNavigate();
 
+ /* DANDO UM VALOR PARA O  COMPOMENTE, QUER DIZER QUE O CAMPO DE EMAIL FICARA VAZIO, POR EXEMPLO*/ 
+
 
     useEffect( () => {
        if(login){
@@ -48,12 +30,13 @@ const theme = createTheme({
             navigate("/");
        }
     }, [ login ] );
+    /* verifica se o email é verdadeiro e te redireciona para outra pagina*/ 
 
     function Autenticar( evento)
     {
         evento.preventDefault();
 
-        fetch( "https://api.escuelajs.co/api/v1/auth/login", {
+        fetch( "http://10.139.75.32:8080/login", {
             method: "POST",
             headers:{
                 'Content-Type': 'application/json'
@@ -61,24 +44,25 @@ const theme = createTheme({
             body: JSON.stringify(
                 {
                     email: email,
-                    password: senha
+                    senha: senha
                 }
             )
         })
         .then( (resposta) => resposta.json() ) 
         .then( (json) => {
-            if(json.statusCode === 401) {
-                setErro(true);
+            if(json.user) {
+                setLogin(true);
             }
             else{
-                setLogin(true);
+                setErro(true);
             }
         } )
         .catch( (erro) => {setErro( true ) } ) 
     }
+    /* verifica se tem erro, avisa pelo alert e se nao tiver manda pro back ange e redireciona para a outra pagina*/ 
 
   return (
-    <ThemeProvider theme={theme}>
+   
     <Container component="section" maxWidth="xs">
         <Box sx={{
             mt: 10,
@@ -89,10 +73,12 @@ const theme = createTheme({
             flexDirection: "column",
             alignItems: "center"
             }}>
-
+                 
             <Typography component="h1" variant='h5'>Entrar</Typography>
+            {erro && ( <Alert  severity="warning">Revise seus dados e tente novamente!</Alert> )}
             <Box component="form" onSubmit={Autenticar}>
-                <TextField
+                
+                <TextField 
                  label="Email"
                  variant='filled' 
                  type="email"
@@ -100,6 +86,7 @@ const theme = createTheme({
                  value={email}
                  onChange={ (e) => setEmail ( e.target.value)}
                  fullWidth 
+                 {...erro && ("error")}
                  />
                 <TextField
                  label="Senha"
@@ -126,7 +113,7 @@ const theme = createTheme({
             </Box>
         </Box>
     </Container>
-    </ThemeProvider>
+  
     )
 }
 
