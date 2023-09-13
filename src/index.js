@@ -6,6 +6,7 @@ import Login from './Login';
 import Cadastro from './Cadastro';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Filmes from './filmes';
+import EditaFilme from './components/EditaFilme';
 
 
 const theme = createTheme({
@@ -50,6 +51,10 @@ const theme = createTheme({
     {
       path: "/filmes",
       element:< Filmes></Filmes>
+    },
+    {
+      path:"/edicao/:id",
+      element: <EditaFilme/>
     }
   ]);
 
