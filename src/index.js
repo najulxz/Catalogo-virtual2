@@ -5,8 +5,8 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Login from './Login';
 import Cadastro from './Cadastro';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import Filmes from './filmes';
-import EditaFilme from './components/EditaFilme';
+import Makeup from './filmes';
+import EditaMakeups from './components/EditaMakeup';
 
 
 const theme = createTheme({
@@ -50,11 +50,11 @@ const theme = createTheme({
     },
     {
       path: "/filmes",
-      element:< Filmes></Filmes>
+      element:< Makeup></Makeup>
     },
     {
       path:"/edicao/:id",
-      element: <EditaFilme/>
+      element: <EditaMakeups/>
     }
   ]);
 

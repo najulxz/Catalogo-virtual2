@@ -1,6 +1,8 @@
 import { Avatar, Button, Container } from "@mui/material";
 import { useEffect, useState } from "react";
+import filmes from "./filmes";
 import Filme from "./components/Filme";
+import Filmes from "./filmes";
 
 function App(props) {
 
@@ -44,7 +46,7 @@ function App(props) {
 
   return (
      <>
-      <h1>Filmes</h1>
+      <h1>Maquiagens</h1>
       <Container
       sx={{
         display:"flex",
@@ -54,17 +56,17 @@ function App(props) {
       }}
       >
         {filmes && (
-          filmes.map((filme, index)=>(
+          filmes.map((filmes, index)=>(
         
-          <Filme
-            imagem={filme.imagem}
-            titulo={filme.titulo}
-            descricao={filme.descricao}
-            categoria={filme.categoria}
-            ano={filme.ano}
-            duracao={filme.duracao}
-            excluir={ (e) => Excluir (e, filme._id)}
-            id={filme._id}
+          <Filmes
+            imagem={filmes.imagem}
+            titulo={filmes.titulo}
+            descricao={filmes.descricao}
+            categoria={filmes.categoria}
+            ano={filmes.ano}
+            duracao={filmes.duracao}
+            excluir={ (e) => Excluir (e, filmes._id)}
+            id={filmes._id}
             />
         ))
       )}

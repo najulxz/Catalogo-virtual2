@@ -5,10 +5,10 @@ import { useState, useEffect } from 'react';
 
     function Filmes()   {
 
-    const[ titulo, setTitulo] = useState ("");
+    const[ cor, setCor] = useState ("");
     const[ descricao, setDescricao ] = useState ("");
-    const[ ano, setAno ] = useState ("");
-    const[ duracao, setDuracao ] = useState ("");
+    const[ marca, setMarca ] = useState ("");
+    const[ validade, setValidade ] = useState ("");
     const[ categoria, setCategoria ] = useState ("");
     const[ imagem, setImagem ] = useState ("");
     const[ cadastro, setCadastro ] = useState(false);
@@ -24,10 +24,10 @@ import { useState, useEffect } from 'react';
         },
         body: JSON.stringify(
             {
-                titulo: titulo,
+                cor: cor,
                 descricao: descricao,
-                ano: ano,
-                duracao: duracao,
+                marca: marca,
+                validade: validade,
                 categoria: categoria,
                 imagem: imagem,
             }
@@ -48,10 +48,10 @@ import { useState, useEffect } from 'react';
     
 }
     useEffect (() => {
-        setTitulo("");
+        setCor("");
         setDescricao("");
-        setAno("");
-        setDuracao("");
+        setMarca("");
+        setValidade("");
         setCategoria("");
         setImagem("");
     } , [cadastro]);
@@ -71,7 +71,7 @@ import { useState, useEffect } from 'react';
              flexDirection: "column",
              alignItems: "center"
         }}>
-            <Typography component="h1" variant='h5'>Filmes</Typography>
+            <Typography component="h1" variant='h5'>Maquiagens</Typography>
 
             {erro && (<Alert severity="warning" sx={{ mt: 2, mb: 2}}>Desculpe, tente novamente</Alert>)}
             {cadastro && (<Alert severity="success" sx={{ mt: 2, mb: 2}}>obrigado por se cadastrar</Alert>)}
@@ -79,12 +79,12 @@ import { useState, useEffect } from 'react';
 
             <Box component="form" onSubmit={Film}> 
             <TextField 
-                 label="Titulo"
+                 label="Cor"
                  variant='filled' 
-                 type="titulo"
+                 type="cor"
                  margin="normal" 
-                 value={titulo}
-                 onChange={ (e) => setTitulo( e.target.value)}
+                 value={cor}
+                 onChange={ (e) => setCor( e.target.value)}
                  fullWidth 
                  />
                  <TextField
@@ -97,21 +97,21 @@ import { useState, useEffect } from 'react';
                  fullWidth 
                  />
                   <TextField 
-                 label="Ano"
+                 label="Marca"
                  variant='filled' 
-                 type="date"
+                 type="marca"
                  margin="normal" 
-                 value={ano}
-                 onChange={ (e) => setAno ( e.target.value)}
+                 value={marca}
+                 onChange={ (e) => setMarca ( e.target.value)}
                  fullWidth 
                  />
                   <TextField 
-                 label="Duracao"
+                 label="Validade"
                  variant='filled' 
-                 type="duracao"
+                 type="validade"
                  margin="normal" 
-                 value={duracao}
-                 onChange={ (e) => setDuracao ( e.target.value)}
+                 value={validade}
+                 onChange={ (e) => setValidade ( e.target.value)}
                  fullWidth 
                  />
                   <TextField 

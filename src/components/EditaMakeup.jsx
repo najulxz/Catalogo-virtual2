@@ -92,7 +92,7 @@ import { useParams } from 'react-router-dom';
             }} >
                 <Typography component="h1" variant='h5'>Editar filme  </Typography>
                 {erro && (<Alert severity="warning" sx={{ mt: 2, mb: 2}}>{erro}</Alert>)}
-            {editar && (<Alert severity="success" sx={{ mt: 2, mb: 2}}>Filme editado com sucesso</Alert>)}
+                {editar && (<Alert severity="success" sx={{ mt: 2, mb: 2}}>Filme editado com sucesso</Alert>)}
 
             <Box component="form" onSubmit={Editar}>
 
