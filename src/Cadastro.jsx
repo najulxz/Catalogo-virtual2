@@ -1,5 +1,7 @@
 import { Alert, Box, Button, Checkbox, Container, FormControlLabel, TextField, Typography } from '@mui/material'
 import React,{ useEffect, useState }  from 'react'
+import MenuResponsivo from './components/MenuResponsivo';
+import Foto from  "./components/img/user.png";
 
 
 
@@ -57,17 +59,23 @@ function Cadastro() {
     
 
   return (
+    <>
+     <MenuResponsivo/>
     <Container component="section" maxWidth="sm">
         <Box sx={{
             mt: 10,
-            backgroundColor: "pink",
+            backgroundColor: "#F8ADE0",
             padding: "50px",
             borderRadius: "10px",
             display: "flex",
             flexDirection: "column",
-            alignItems: "center"
+            alignItems: "center",
+
             }}>
-            <Typography component="h1" variant='h5'>Cadastro</Typography>
+
+            <img src={Foto} height="150"></img>
+
+            <Typography component="h2" variant='h5'>Insira Suas Informações Para Fazer O Cadastro</Typography>
 
             {erro && (<Alert severity="warning" sx={{ mt: 2, mb: 2}}>Desculpe, tente novamente</Alert>)}
             {cadastro && (<Alert severity="success" sx={{ mt: 2, mb: 2}}>obrigado por se cadastrar</Alert>)}
@@ -124,9 +132,11 @@ function Cadastro() {
              label="Concordo com todos os termos e condições"
             />
             <Button type="submit" variant="contained" fullWidth sx={ { mt: 2, md: 2} } >Cadastrar</Button>
+            
             </Box>
             </Box>
     </Container>
+    </>
     )
 }
  

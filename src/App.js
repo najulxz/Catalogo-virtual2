@@ -3,8 +3,12 @@ import { useEffect, useState } from "react";
 import filmes from "./filmes";
 import Filme from "./components/Filme";
 import Filmes from "./filmes";
+import MenuResponsivo from "./components/MenuResponsivo";
+import "./global.css";
 
 function App(props) {
+
+ 
 
   const [ filmes, setFilmes ] = useState();
   const [ erro, setErro ] = useState();
@@ -44,8 +48,11 @@ function App(props) {
   .catch( (erro) => {setErro( true ) } ) 
   }
 
+
+
   return (
      <>
+     <MenuResponsivo/>
       <h1>Maquiagens</h1>
       <Container
       sx={{

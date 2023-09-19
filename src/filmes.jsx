@@ -1,6 +1,7 @@
 import { Alert, Box, Button, Container, TextField, Typography } from '@mui/material'
 import React from 'react';
 import { useState, useEffect } from 'react';
+import MenuResponsivo from './components/MenuResponsivo';
 
 
     function Filmes()   {
@@ -61,7 +62,11 @@ import { useState, useEffect } from 'react';
 
   
   return (
+    <>
+    <MenuResponsivo/>
     <Container component="section" maxWidth="xs">
+
+        
         <Box sx={{
              mt: 10,
              backgroundColor: "pink",
@@ -136,6 +141,7 @@ import { useState, useEffect } from 'react';
             </Box>
         </Box>
     </Container>
+    </>
   )
 }
 export default Filmes;
