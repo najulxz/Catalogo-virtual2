@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import MenuResponsivo from './components/MenuResponsivo';
 
 
-    function Filmes()   {
+    function Maquiagem()   {
 
     const[ cor, setCor] = useState ("");
     const[ descricao, setDescricao ] = useState ("");
@@ -18,19 +18,20 @@ import MenuResponsivo from './components/MenuResponsivo';
 
     function Film(evento){
         evento.preventDefault();
-        fetch( process.env.REACT_APP_BACKEND + "filmes", {
+        fetch( process.env.REACT_APP_BACKEND + "produtos", {
         method: "POST",
         headers:{
             'Content-Type': 'application/json'
         },
         body: JSON.stringify(
             {
-                cor: cor,
+                titulo: cor,
                 descricao: descricao,
-                marca: marca,
+                ano: marca,
                 validade: validade,
                 categoria: categoria,
                 imagem: imagem,
+                usuario:localStorage.getItem("usuario")
             }
         )
     })
@@ -74,7 +75,8 @@ import MenuResponsivo from './components/MenuResponsivo';
              borderRadius: "10px",
              display: "flex",
              flexDirection: "column",
-             alignItems: "center"
+             alignItems: "center",
+             
         }}>
             <Typography component="h1" variant='h5'>Maquiagens</Typography>
 
@@ -144,4 +146,4 @@ import MenuResponsivo from './components/MenuResponsivo';
     </>
   )
 }
-export default Filmes;
+export default Maquiagem;

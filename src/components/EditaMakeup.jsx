@@ -16,10 +16,12 @@ import MenuResponsivo from './MenuResponsivo';
     const[ imagem, setImagem ] = useState ("");
     const[ editar, setEditar ] = useState(false);
     const[ erro, setErro] = useState(false);
+    
 
     useEffect( () => {
+        const usuario = localStorage.getItem("usuario");
     
-        fetch( process.env.REACT_APP_BACKEND + "filmes/" + id, {
+        fetch( process.env.REACT_APP_BACKEND + "produtos/" +  usuario + "/" + id, {
             method: "GET",
             headers:{
                 'Content-Type': 'application/json'
@@ -46,7 +48,7 @@ import MenuResponsivo from './MenuResponsivo';
 
     function Editar (evento) {
         evento.preventDefault();
-        fetch( process.env.REACT_APP_BACKEND + "filmes", {
+        fetch( process.env.REACT_APP_BACKEND + "produtos", {
             method: "PUT",
             headers:{
                 'Content-Type': 'application/json'
@@ -60,6 +62,7 @@ import MenuResponsivo from './MenuResponsivo';
                     duracao: duracao,
                     categoria: categoria,
                     imagem: imagem,
+                    usuario: localStorage.getItem("usuario"),
                 }
             )
         })
@@ -91,9 +94,9 @@ import MenuResponsivo from './MenuResponsivo';
             borderRadius: "10px",
             display: "flex",
             flexDirection: "column",
-            alignItems: "center"
+            alignItems: "center",
             }} >
-                <Typography component="h1" variant='h5'>Editar filme  </Typography>
+                <Typography component="h1" variant='h5'>Editar Makeup  </Typography>
                 {erro && (<Alert severity="warning" sx={{ mt: 2, mb: 2}}>{erro}</Alert>)}
                 {editar && (<Alert severity="success" sx={{ mt: 2, mb: 2}}>Filme editado com sucesso</Alert>)}
 

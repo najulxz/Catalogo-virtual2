@@ -134,7 +134,7 @@ function MenuResponsivo() {
                onClick={handleCloseNavMenu}
                sx={{ my: 2, color: 'white', display: 'block' }}
              > 
-               <Link href={"/filmes"} sx={{color:'black', textDecoration:'none'}}>Produtos</Link>
+               <Link href={"/Maquiagem"} sx={{color:'black', textDecoration:'none'}}>Produtos</Link>
 
              </Button>
                 </Box>
